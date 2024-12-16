@@ -1,12 +1,23 @@
-# Typebot计算巢快速部署
+# Authorizer
 
 >**免责声明：**本服务由第三方提供，我们尽力确保其安全性、准确性和可靠性，但无法保证其完全免于故障、中断、错误或攻击。因此，本公司在此声明：对于本服务的内容、准确性、完整性、可靠性、适用性以及及时性不作任何陈述、保证或承诺，不对您使用本服务所产生的任何直接或间接的损失或损害承担任何责任；对于您通过本服务访问的第三方网站、应用程序、产品和服务，不对其内容、准确性、完整性、可靠性、适用性以及及时性承担任何责任，您应自行承担使用后果产生的风险和责任；对于因您使用本服务而产生的任何损失、损害，包括但不限于直接损失、间接损失、利润损失、商誉损失、数据损失或其他经济损失，不承担任何责任，即使本公司事先已被告知可能存在此类损失或损害的可能性；我们保留不时修改本声明的权利，因此请您在使用本服务前定期检查本声明。如果您对本声明或本服务存在任何问题或疑问，请联系我们。
 
 ## 概述
-Typebot：Typebot 是一个公平开源的聊天机器人构建器。它允许您创建对话式应用/表单（如潜在客户资格认证、客户支持、产品发布、用户引导、AI 聊天），并将其部署到您的网站或 WhatsApp 号码上，同时实时收集结果。
-可在几分钟内快速创建出一个你的Gpt助手
+Authorizer 是一个开源的应用程序身份验证和授权解决方案。您可以拥有自己的数据库，并完全控制用户信息。您可以自行托管 Authorizer 实例并连接到任何数据库（目前支持 11 种以上的数据库，包括 Postgres、MySQL、SQLite、SQLServer、YugaByte、MariaDB、PlanetScale、CassandraDB、ScyllaDB、MongoDB、ArangoDB）。
 
-
+Authorizer提供了一下的功能：
+- ✅ 使用电子邮件ID和密码登录/注册
+- ✅ 安全的会话管理
+- ✅ 电子邮件验证
+- ✅ 兼容 OAuth2 和 OpenID 的 API
+- ✅ 安全更新个人资料的 API
+- ✅ 使用电子邮件的忘记密码流程
+- ✅ 社交登录（Google、Github、Facebook、LinkedIn、Apple，更多即将推出）
+- ✅ 基于角色的访问管理
+- ✅ 无密码登录
+- ✅ 多因素认证
+- ✅ 电子邮件模板
+- ✅ Webhooks
 
 ## 前提条件
 <font style="color:rgb(51, 51, 51);">部署Typebot社区版服务实例，需要对部分阿里云资源进行访问和创建操作。因此您的账号需要包含如下资源的权限。</font><font style="color:rgb(51, 51, 51);"> </font>**<font style="color:rgb(51, 51, 51);">说明</font>**<font style="color:rgb(51, 51, 51);">：当您的账号是RAM账号时，才需要添加此权限。</font>
@@ -45,19 +56,13 @@ Typebot：Typebot 是一个公平开源的聊天机器人构建器。它允许�
 
 
 ## 部署流程
-1. 访问计算巢 [部署链接](https://computenest.console.aliyun.com/service/instance/create/default?type=user&ServiceName=Typebot%E7%A4%BE%E5%8C%BA%E7%89%88)，按提示填写部署参数
+1. 访问计算巢 [部署链接](https://computenest.console.aliyun.com/service/instance/create/default?type=user&ServiceName=Authorizer%E7%A4%BE%E5%8C%BA%E7%89%88)，按提示填写部署参数
 2. 填写实例参数![](./img/param1.png)
 3. 根据需求选择新建专用网络或直接使用已有的专有网络。填写可用区和网络参数![](./img/param2.png)
-4. 如果你需要使用GitHub的OAuth登录，则可以在此处填写你的Client和Secret，更多详细信息可以查阅GitHub的[开发者设置](https://github.com/settings/developers)![](./img/param3.png)。点击“下一步：确认订单”
 4. 点击立即创建，等待服务实例部署完成![](./img/param4.png)
 5. 服务实例部署完成后，点击实例ID进入到详情界面![](./img/serviceInstance2.png)
 6. 访问服务实例的使用URL![](./img/serviceInstance3.png)
-7. 该应用提供了两个端口一个是机器人使用界面-以8081端口结尾，一个是机器人构建界面，以8080端口结尾。
-8. 让我们先进入到构建界面，开始创建你的机器人吧，首先通过阿里云账号登录![](./img/app1.png)
-9. 登录进来后可以创建机器人![](./img/app2.png)
-10. 我们可以通过这三种方式创建机器人，这里选择第一个模版创建。![](./img/app3.png)
-11. 然后选择第一个示例模版![](./img/app4.png)
-12. 点击右上角的Publish按钮发布。![](./img/app5.png)
-13. 复制该机器人的访问链接并粘贴到浏览器中访问。![](./img/app6.png)
-13. 就可以和你的机器人对话了。![](./img/app7.png)
-
+7. 该应用提供了一个端口，可直接点击使用。
+8. 让我们进入到登录界面，注册admin账号。这里固定了账号名为admin，密码由你输入![](./img/app1.png)
+9. 登录进来后可以看到整体的控制台如图![](./img/app2.png)
+10. 支持了很多种的OAuth登录方式，比如谷歌，Github等。
