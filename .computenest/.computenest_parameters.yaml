@@ -1,0 +1,12 @@
+ServiceType: private
+AllowedRegions:
+- ap-southeast-1
+ArtifactSourceType: DockerCompose
+RepoName: aliyun-computenest/quickstart-authorizer
+DockerComposeEnvPath: .env.test
+RegionId: cn-hangzhou
+CustomParameters: ''
+DockerComposeYamlPath: docker-compose.yaml
+Owner: LYH-RAIN
+Branch: main
+Platform: github
