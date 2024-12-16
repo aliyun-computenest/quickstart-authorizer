@@ -3,67 +3,35 @@ Service:
   DeployType: ros
   OperationMetadata:
     StatusOperationConfigs:
-      - TemplateName: 'ECS单机版'
+      - TemplateName: '单机版'
         SupportOperations:
           - Start
           - Stop
           - Restart
     SupportBackup: true
-    ModifyParametersConfig:
-      - TemplateName: ECS单机版
-        Operation:
-          - Name: 变更ECS实例规格
-            Description: 变更ECS实例规格
-            Type: Custom
-            Parameters:
-              - EcsInstanceType
-          - Name: 变更ECS实例密码
-            Description: 变更ECS实例密码
-            Type: Custom
-            Parameters:
-              - InstancePassword
-    
   DeployMetadata:
     SupplierDeployMetadata:
-      SupplierTemplateConfigs:
-        - Name: 'ECS单机版'
-          Url: 'ros_templates/template.yaml'
-          AllowedRegions:
-              - ap-southeast-1
-      ArtifactRelation:
-        ecs_image_quickstart-authorizer:
-          ArtifactId: ${Artifact.EcsImage.ArtifactId}
-          ArtifactVersion: draft
+      FileArtifactRelation:
+        '{{ computenest::file::aliyun-computenest_quickstart-authorizer-docker-compose }}':
+          ArtifactId: ${Artifact.Artifact_1.ArtifactId}
+          ArtifactVersion: ${Artifact.Artifact_1.ArtifactVersion}
     TemplateConfigs:
-      - Name: ECS单机版
+      - Name: 单机版
         Url: 'ros_templates/template.yaml'
-        # 未选择部署地域则采用 []
         AllowedRegions:
-          - ap-southeast-1
+          - cn-hangzhou
+          - cn-shanghai
+          - cn-beijing
   ServiceType: private
   ServiceInfo:
     Locale: zh-CN
-    ShortDescription: demo
+    ShortDescription: docker compose deploy
     Image: 'resources/icons/service_logo.png'
 Artifact:
-  EcsImage:
-    ArtifactType: EcsImage
-    ArtifactName: ecs_image_quickstart-authorizer
-    Description: quickstart-authorizer EcsImage
-    SupportRegionIds: 
-        - ap-southeast-1
-    ArtifactBuildProperty:
-      CodeRepo:
-        Platform: github
-        Owner: LYH-RAIN
-        RepoName: aliyun-computenest/quickstart-authorizer
-        Branch: main
-      RegionId: ap-southeast-1
-      CommandType: RunShellScript
-      CommandContent: |-
-        mkdir -p /root/application
-        if [ -e "/root/code/." ]; then cp -r "/root/code/." "/root/application/"; fi
-        cd /root/application
-        cp .env.test ./.env
-        docker compose -f docker-compose.yaml build
-        docker compose -f docker-compose.yaml pull || true;
+  Artifact_1:
+    ArtifactType: File
+    ArtifactName: aliyun-computenest_quickstart-authorizer-docker-compose
+    ArtifactProperty:
+      RegionId: cn-hangzhou
+      Url: 'resources/artifact_resources/docker_compose.tar'
+AcrImageBuilder:

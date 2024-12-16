@@ -257,7 +257,7 @@ Resources:
         Ref: ZoneId
       SecurityGroupId:
         Ref: SecurityGroup
-      ImageId: ecs_image_quickstart-authorizer
+      ImageId: "{{resolve:oos:aliyun/services/computenest/images/aliyun_3_2104_docker_compose_2_27_compute_nest}}"
       Password:
         Ref: InstancePassword
       InstanceType:
@@ -267,7 +267,6 @@ Resources:
       InternetMaxBandwidthOut: 5
       IoOptimized: optimized
       MaxAmount: 1
-  
   RunInstallCommand:
     Type: ALIYUN::ECS::RunCommand
     Properties:
@@ -281,6 +280,9 @@ Resources:
       CommandContent:
         Fn::Sub:
           - |
+            wget '{{ computenest::file::aliyun-computenest_quickstart-authorizer-docker-compose }}' -O /root/application/docker_compose.tar
+            tar -xvf /root/application/docker_compose.tar -C /root/application
+
             cat > /etc/systemd/system/quickstart-authorizer.service <<EOF
             [Unit]
             Description=Docker Compose Application Service
@@ -290,7 +292,7 @@ Resources:
             [Service]
             Type=oneshot
             RemainAfterExit=yes
-            WorkingDirectory=/root/application
+            WorkingDirectory=/root/application/docker_compose
             ExecStart=/usr/bin/docker compose -f docker-compose.yaml up -d
             ExecStop=/usr/bin/docker compose down
             TimeoutStartSec=0
@@ -302,7 +304,6 @@ Resources:
             systemctl enable quickstart-authorizer
 
             
-            sed -i 's/pull_policy: always/pull_policy: if_not_present/g' /root/application/docker-compose.yaml
             systemctl start quickstart-authorizer
           - RegionId:
               Ref: ALIYUN::Region
