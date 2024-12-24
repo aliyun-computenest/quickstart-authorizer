@@ -10,7 +10,7 @@ Parameters:
     Label:
       en: Domain
       zh-cn: 域名
-    Default: 'argo.mycompany.com'
+    Default: 'authorizer.mycompany.com'
     Description:
       en: Please enter a valid domain name
       zh-cn: 请输入有效的域名
@@ -372,4 +372,8 @@ Metadata:
           - VSwitchCidrBlock
         Label:
           default: 可用区配置
+      - Parameters:
+          - DomainAddress
+        Label:
+          default: 域名配置
       
