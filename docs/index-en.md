@@ -49,16 +49,17 @@ The costs associated with deploying the community edition in ComputeNest mainly 
 1. Visit the Compute Nest [deployment link](https://computenest.console.aliyun.com/service/instance/create/default?type=user&ServiceName=Authorizer%E7%A4%BE%E5%8C%BA%E7%89%88) and fill in the deployment parameters as prompted.
 2. Fill in the instance parameters: ![](./img-en/param1.png)
 3. Choose to create a new dedicated network or use an existing VPC as needed. Fill in the availability zone and network parameters: ![](./img-en/param2.png)
-4. Click "Create Now" and wait for the service instance deployment to complete: ![](./img-en/param4.png)
-5. Once the service instance is deployed, click on the instance ID to enter the detail page: ![](./img/serviceInstance2.png)
-6. Access the URL for using the service instance: ![](./img-en/serviceInstance3.png)
-7. The application provides a port that can be used directly by clicking.
-8. Let's navigate to the login page and register an admin account. The username is fixed as "admin", and you can enter the password: ![](./img-en/app1.png)
-9. Before using, we need to bind your domain name to the public IP of the service instance, such as using Alibaba Cloud's DNS resolution service. ![](./img-en/app4.png)
-10. You can refer to this illustration to set up DNS resolution. ![](./img-en/app5.png)
-11. If you don't have an SSL certificate, you can purchase one on Alibaba Cloud. ![img.png](./img-en/app6.png)
-12. Once logged in, you can see the overall console as shown in the image. ![](./img-en/app2.png)
-13. It supports various OAuth login methods, such as Google, GitHub, etc.
-14. After configuration, you can access OAuth login at https://your-domain:8080/app.
+4. Enter your domain name. Note that you need to purchase an SSL certificate![](./img-en/param3.png)
+5. Click "Create Now" and wait for the service instance deployment to complete: ![](./img-en/param4.png)
+6. Once the service instance is deployed, click on the instance ID to enter the detail page: ![](./img/serviceInstance2.png)
+7. Access the URL for using the service instance: ![](./img-en/serviceInstance3.png)
+8. The application provides a port that can be used directly by clicking.
+9. Let's navigate to the login page and register an admin account. The username is fixed as "admin", and you can enter the password: ![](./img-en/app1.png)
+10. Before using, we need to bind your domain name to the public IP of the service instance, such as using Alibaba Cloud's DNS resolution service. ![](./img-en/app4.png)
+11. You can refer to this illustration to set up DNS resolution. ![](./img-en/app5.png)
+12. If you don't have an SSL certificate, you can purchase one on Alibaba Cloud. ![img.png](./img-en/app6.png)
+13. Once logged in, you can see the overall console as shown in the image. ![](./img-en/app2.png)
+14. It supports various OAuth login methods, such as Google, GitHub, etc.
+15. After configuration, you can access OAuth login at https://your-domain:8080/app.
 
 

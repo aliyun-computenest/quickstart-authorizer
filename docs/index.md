@@ -60,14 +60,15 @@ Authorizer提供了一下的功能：
 1. 访问计算巢 [部署链接](https://computenest.console.aliyun.com/service/instance/create/default?type=user&ServiceName=Authorizer%E7%A4%BE%E5%8C%BA%E7%89%88)，按提示填写部署参数
 2. 填写实例参数![](./img/param1.png)
 3. 根据需求选择新建专用网络或直接使用已有的专有网络。填写可用区和网络参数![](./img/param2.png)
-4. 点击立即创建，等待服务实例部署完成![](./img/param4.png)
-5. 服务实例部署完成后，点击实例ID进入到详情界面![](./img/serviceInstance2.png)
-6. 访问服务实例的使用URL![](./img/serviceInstance3.png)
-7. 该应用提供了一个端口，可直接点击使用。
-8. 让我们进入到登录界面，注册admin账号。这里固定了账号名为admin，密码由你输入![](./img/app1.png)
-9. 在使用前我们需要将你的域名绑定到服务实例的公网IP上，比如使用阿里云的云解析服务。![](./img/app4.png)
-10. 可参考该图示例设置dns的解析。![](./img/app5.png)
-11. 如果没有SSL证书，可在阿里云上购买。![](./img/app6.png)
-12. 登录进来后可以看到整体的控制台如图![](./img/app2.png)
-13. 支持了很多种的OAuth登录方式，比如谷歌，Github等。
-14. 配置完，可访问https://你的域名:8080/app实现OAuth登录。
+4. 填写您的域名。注意需要购买SSL证书。![](./img/param3.png)
+5. 点击立即创建，等待服务实例部署完成![](./img/param4.png)
+6. 服务实例部署完成后，点击实例ID进入到详情界面![](./img/serviceInstance2.png)
+7. 访问服务实例的使用URL![](./img/serviceInstance3.png)
+8. 该应用提供了一个端口，可直接点击使用。
+9. 让我们进入到登录界面，注册admin账号。这里固定了账号名为admin，密码由你输入![](./img/app1.png)
+10. 在使用前我们需要将你的域名绑定到服务实例的公网IP上，比如使用阿里云的云解析服务。![](./img/app4.png)
+11. 可参考该图示例设置dns的解析。![](./img/app5.png)
+12. 如果没有SSL证书，可在阿里云上购买。![](./img/app6.png)
+13. 登录进来后可以看到整体的控制台如图![](./img/app2.png)
+14. 支持了很多种的OAuth登录方式，比如谷歌，Github等。
+15. 配置完，可访问https://你的域名:8080/app实现OAuth登录。
