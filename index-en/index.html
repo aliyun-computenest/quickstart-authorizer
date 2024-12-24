@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="计算巢是阿里云开放给企业应用服务商的服务管理平台。服务商能够在计算巢上发布私有化部署服务，为其客户提供云上软件一键部署的能力；同时也支持全托管模式的服务，赋能服务商托管其客户资源。">
+  <title>Authorizer Community Edition Quick Deployment - Aliyun 计算巢 x Demo</title>
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+  <link rel="stylesheet" href="../css/theme.css">
+  
+
+  
+
+  
+  
+
+  
+    <script src="../search/main.js"></script>
+  
+
+  
+
+  <script src="../js/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="nav-inner">
+        <div class="logo">
+          <img src="./img/logo-2x.png">
+        </div>
+        <div class="nav-list">
+          <ul>
+          
+              <li><a href="#authorizer-community-edition-quick-deployment">Authorizer Community Edition Quick Deployment</a></li>
+              
+                  <li><a href="#overview">Overview</a></li>
+                  
+              
+                  <li><a href="#prerequisites">Prerequisites</a></li>
+                  
+              
+                  <li><a href="#billing-instructions">Billing Instructions</a></li>
+                  
+              
+                  <li><a href="#deployment-architecture">Deployment Architecture</a></li>
+                  
+              
+                  <li><a href="#parameter-description">Parameter Description</a></li>
+                  
+              
+                  <li><a href="#deployment-process">Deployment Process</a></li>
+                  
+              
+          
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="content theme-github">
+      
+      <div class="content-inner">        
+        
+        <h1 id="authorizer-community-edition-quick-deployment">Authorizer Community Edition Quick Deployment</h1>
+<blockquote>
+<p><strong>Disclaimer:</strong> This service is provided by a third party. We strive to ensure its safety, accuracy, and reliability, but cannot guarantee it is entirely free of faults, interruptions, errors, or attacks. Therefore, our company hereby states that we make no representations, warranties, or commitments regarding the content, accuracy, completeness, reliability, applicability, or timeliness of this service, and shall not be liable for any direct or indirect loss or damage arising from your use of this service; regarding third-party websites, applications, products, and services accessed through this service, we are not responsible for their content, accuracy, completeness, reliability, applicability, or timeliness, and you should bear the risks and responsibilities resulting from the use; we will not be liable for any losses or damages arising from your use of this service, including but not limited to direct losses, indirect losses, loss of profits, loss of goodwill, loss of data, or other economic losses, even if the company was previously notified of the possibility of such losses or damages; we reserve the right to modify this disclaimer from time to time, so please check this disclaimer regularly before using this service. If you have any questions or concerns about this disclaimer or this service, please contact us.</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p><strong>Authorizer</strong> is an open-source authentication and authorization solution for your applications. Bring your database and have complete control over the user information. You can self-host authorizer instances and connect to any database (Currently supports 11+ databases including <a href="https://www.postgresql.org/">Postgres</a>, <a href="https://www.mysql.com/">MySQL</a>, <a href="https://www.sqlite.org/index.html">SQLite</a>, <a href="https://www.microsoft.com/en-us/sql-server/">SQLServer</a>, <a href="https://www.yugabyte.com/">YugaByte</a>,  <a href="https://mariadb.org/">MariaDB</a>, <a href="https://planetscale.com/">PlanetScale</a>, <a href="https://cassandra.apache.org/_/index.html">CassandraDB</a>, <a href="https://www.scylladb.com/">ScyllaDB</a>, <a href="https://mongodb.com/">MongoDB</a>, <a href="https://www.arangodb.com/">ArangoDB</a>).</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Deploying the Maybe community edition service instance requires access to and the creation of certain Alibaba Cloud resources. Therefore, your account needs to contain permissions for the following resources.<br />
+<strong>Note:</strong> This permission is only required when your account is a RAM account.</p>
+<table>
+<thead>
+<tr>
+<th>Permission Policy Name</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AliyunECSFullAccess</td>
+<td>Permission to manage cloud server services (ECS)</td>
+</tr>
+<tr>
+<td>AliyunVPCFullAccess</td>
+<td>Permission to manage Virtual Private Cloud (VPC)</td>
+</tr>
+<tr>
+<td>AliyunROSFullAccess</td>
+<td>Permission to manage Resource Orchestration Service (ROS)</td>
+</tr>
+<tr>
+<td>AliyunComputeNestUserFullAccess</td>
+<td>Permission to manage the user side of ComputeNest</td>
+</tr>
+</tbody>
+</table>
+<h2 id="billing-instructions">Billing Instructions</h2>
+<p>The costs associated with deploying the community edition in ComputeNest mainly involve:
++ The selected vCPU and memory specifications
++ The type and capacity of the system disk
++ Public network bandwidth
+  In addition, a domain name and an SSL certificate are required because the Authorizer software can only be accessed via the HTTPS protocol.</p>
+<h2 id="deployment-architecture">Deployment Architecture</h2>
+<p><img alt="" src="../img-en/deploy.png" /></p>
+<h2 id="parameter-description">Parameter Description</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter Group</th>
+<th>Parameter Item</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service Instance</td>
+<td>Service Instance Name</td>
+<td>Length not exceeding 64 characters, must start with a letter, can contain numbers, letters, hyphens (-), and underscores (_)</td>
+</tr>
+<tr>
+<td></td>
+<td>Region</td>
+<td>The region in which the service instance is deployed</td>
+</tr>
+<tr>
+<td></td>
+<td>Payment Type</td>
+<td>The billing type of the resource: pay-as-you-go or subscription</td>
+</tr>
+<tr>
+<td>ECS Instance Configuration</td>
+<td>Instance Type</td>
+<td>Instance specifications available in the availability zone</td>
+</tr>
+<tr>
+<td></td>
+<td>Instance Password</td>
+<td>Length 8-30, must include three items (uppercase letters, lowercase letters, numbers, or special symbols from the set ()`~!@#$%^&amp;*-+=</td>
+</tr>
+<tr>
+<td>Network Configuration</td>
+<td>Availability Zone</td>
+<td>The availability zone where the ECS instance is located</td>
+</tr>
+<tr>
+<td></td>
+<td>VPC ID</td>
+<td>The VPC where the resource is located</td>
+</tr>
+<tr>
+<td></td>
+<td>Switch ID</td>
+<td>The switch where the resource is located</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deployment-process">Deployment Process</h2>
+<ol>
+<li>Visit the Compute Nest <a href="https://computenest.console.aliyun.com/service/instance/create/default?type=user&amp;ServiceName=Authorizer%E7%A4%BE%E5%8C%BA%E7%89%88">deployment link</a> and fill in the deployment parameters as prompted.</li>
+<li>Fill in the instance parameters: <img alt="" src="../img-en/param1.png" /></li>
+<li>Choose to create a new dedicated network or use an existing VPC as needed. Fill in the availability zone and network parameters: <img alt="" src="../img-en/param2.png" /></li>
+<li>Enter your domain name. Note that you need to purchase an SSL certificate<img alt="" src="../img-en/param3.png" /></li>
+<li>Click "Create Now" and wait for the service instance deployment to complete: <img alt="" src="../img-en/param4.png" /></li>
+<li>Once the service instance is deployed, click on the instance ID to enter the detail page: <img alt="" src="../img/serviceInstance2.png" /></li>
+<li>Access the URL for using the service instance: <img alt="" src="../img-en/serviceInstance3.png" /></li>
+<li>The application provides a port that can be used directly by clicking.</li>
+<li>Let's navigate to the login page and register an admin account. The username is fixed as "admin", and you can enter the password: <img alt="" src="../img-en/app1.png" /></li>
+<li>Before using, we need to bind your domain name to the public IP of the service instance, such as using Alibaba Cloud's DNS resolution service. <img alt="" src="../img-en/app4.png" /></li>
+<li>You can refer to this illustration to set up DNS resolution. <img alt="" src="../img-en/app5.png" /></li>
+<li>If you don't have an SSL certificate, you can purchase one on Alibaba Cloud. <img alt="img.png" src="../img-en/app6.png" /></li>
+<li>Once logged in, you can see the overall console as shown in the image. <img alt="" src="../img-en/app2.png" /></li>
+<li>It supports various OAuth login methods, such as Google, GitHub, etc.</li>
+<li>After configuration, you can access OAuth login at https://your-domain:8080/app.</li>
+</ol>
+        
+      </div>
+
+      <div class="copyrights">© 2009-2022 Aliyun.com 版权所有</div>
+    </div>
+  </div>
+  
+  <!--
+  MkDocs version      : 1.6.1
+  Docs Build Date UTC : 2024-12-24 11:15:35.570196+00:00
+  -->
+</body>
+</html>
