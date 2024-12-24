@@ -5,6 +5,16 @@ Conditions:
       - NewVPC
       - Ref: VpcOption
 Parameters:
+  DomainAddress:
+    Type: String
+    Label:
+      en: Domain
+      zh-cn: 域名
+    Default: 'argo.mycompany.com'
+    Description:
+      en: Please enter a valid domain name
+      zh-cn: 请输入有效的域名
+    AllowedPattern: '^(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.[A-Za-z]{2,})+$'
   VpcOption:
     Type: String
     AllowedValues:
@@ -306,8 +316,8 @@ Resources:
 Outputs: 
   authorizer_address:
     Description:
-      en: authorizer address.
-      zh-cn: authorizer 访问页面。
+      en: authorizer ip.
+      zh-cn: authorizer ip。
     Value:
       Fn::Sub:
         - http://${ServerAddress}:8080
@@ -317,6 +327,28 @@ Outputs:
               - Fn::GetAtt:
                   - InstanceGroup
                   - PublicIps
+  AuthorizerEndpoint:
+    Description:
+      zh-cn: Authorizer地址
+      en: Authorizer
+    Value:
+      Fn::Sub:
+        - "http://${DomainAddress}:2746"
+        - DomainAddress:
+            Ref: DomainAddress
+  AuthorizerDescription:
+    Label: 请配置到域名解析或hosts中
+    Value:
+      Fn::Sub:
+        - ${ServerAddress} ${DomainAddress}
+        - ServerAddress:
+            Fn::Select:
+              - 0
+              - Fn::GetAtt:
+                  - InstanceGroup
+                  - PublicIps
+          DomainAddress:
+            Ref: DomainAddress
 Metadata:
   ALIYUN::ROS::Interface:
     ParameterGroups:

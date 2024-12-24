@@ -5,20 +5,6 @@
 ## Overview
 **Authorizer** is an open-source authentication and authorization solution for your applications. Bring your database and have complete control over the user information. You can self-host authorizer instances and connect to any database (Currently supports 11+ databases including [Postgres](https://www.postgresql.org/), [MySQL](https://www.mysql.com/), [SQLite](https://www.sqlite.org/index.html), [SQLServer](https://www.microsoft.com/en-us/sql-server/), [YugaByte](https://www.yugabyte.com/),  [MariaDB](https://mariadb.org/), [PlanetScale](https://planetscale.com/), [CassandraDB](https://cassandra.apache.org/_/index.html), [ScyllaDB](https://www.scylladb.com/), [MongoDB](https://mongodb.com/), [ArangoDB](https://www.arangodb.com/)).
 
-Authorizer offer the following functionality
-
-- ✅ Sign-in / Sign-up with email ID and password
-- ✅ Secure session management
-- ✅ Email verification
-- ✅ OAuth2 and OpenID compatible APIs
-- ✅ APIs to update profile securely
-- ✅ Forgot password flow using email
-- ✅ Social logins (Google, Github, Facebook, LinkedIn, Apple more coming soon)
-- ✅ Role-based access management
-- ✅ Password-less login with magic link login
-- ✅ Multi factor authentication
-- ✅ Email templating
-- ✅ Webhooks
 
 ## Prerequisites
 
@@ -59,13 +45,18 @@ The costs associated with deploying the community edition in ComputeNest mainly 
 ## Deployment Process
 
 1. Visit the Compute Nest [deployment link](https://computenest.console.aliyun.com/service/instance/create/default?type=user&ServiceName=Authorizer%E7%A4%BE%E5%8C%BA%E7%89%88) and fill in the deployment parameters as prompted.
-2. Fill in the instance parameters: ![](./img/param1.png)
-3. Choose to create a new dedicated network or use an existing VPC as needed. Fill in the availability zone and network parameters: ![](./img/param2.png)
-4. Click "Create Now" and wait for the service instance deployment to complete: ![](./img/param4.png)
+2. Fill in the instance parameters: ![](./img-en/param1.png)
+3. Choose to create a new dedicated network or use an existing VPC as needed. Fill in the availability zone and network parameters: ![](./img-en/param2.png)
+4. Click "Create Now" and wait for the service instance deployment to complete: ![](./img-en/param4.png)
 5. Once the service instance is deployed, click on the instance ID to enter the detail page: ![](./img/serviceInstance2.png)
-6. Access the URL for using the service instance: ![](./img/serviceInstance3.png)
+6. Access the URL for using the service instance: ![](./img-en/serviceInstance3.png)
 7. The application provides a port that can be used directly by clicking.
-8. Let's navigate to the login page and register an admin account. The username is fixed as "admin", and you can enter the password: ![](./img/app1.png)
-9. After logging in, you can see the overall dashboard as shown: ![](./img/app2.png)
-10. Various OAuth login methods are supported, such as Google, GitHub, etc.
+8. Let's navigate to the login page and register an admin account. The username is fixed as "admin", and you can enter the password: ![](./img-en/app1.png)
+9. Before using, we need to bind your domain name to the public IP of the service instance, such as using Alibaba Cloud's DNS resolution service. ![](./img-en/app4.png)
+10. You can refer to this illustration to set up DNS resolution. ![](./img-en/app5.png)
+11. If you don't have an SSL certificate, you can purchase one on Alibaba Cloud. ![img.png](./img-en/app6.png)
+12. Once logged in, you can see the overall console as shown in the image. ![](./img-en/app2.png)
+13. It supports various OAuth login methods, such as Google, GitHub, etc.
+14. After configuration, you can access OAuth login at https://your-domain:8080/app.
+
 

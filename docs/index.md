@@ -28,6 +28,7 @@ Authorizer提供了一下的功能：
 | <font style="color:rgb(51, 51, 51);">AliyunVPCFullAccess</font> | <font style="color:rgb(51, 51, 51);">管理专有网络（VPC）的权限</font> |
 | <font style="color:rgb(51, 51, 51);">AliyunROSFullAccess</font> | <font style="color:rgb(51, 51, 51);">管理资源编排服务（ROS）的权限</font> |
 | <font style="color:rgb(51, 51, 51);">AliyunComputeNestUserFullAccess</font> | <font style="color:rgb(51, 51, 51);">管理计算巢服务（ComputeNest）的用户侧权限</font> |
+除此以外还需要一个域名和SSL证书，因为Authorizer软件只能在HTTPS协议下访问。
 
 
 ## 计费说明
@@ -64,5 +65,9 @@ Authorizer提供了一下的功能：
 6. 访问服务实例的使用URL![](./img/serviceInstance3.png)
 7. 该应用提供了一个端口，可直接点击使用。
 8. 让我们进入到登录界面，注册admin账号。这里固定了账号名为admin，密码由你输入![](./img/app1.png)
-9. 登录进来后可以看到整体的控制台如图![](./img/app2.png)
-10. 支持了很多种的OAuth登录方式，比如谷歌，Github等。
+9. 在使用前我们需要将你的域名绑定到服务实例的公网IP上，比如使用阿里云的云解析服务。![](./img/app4.png)
+10. 可参考该图示例设置dns的解析。![](./img/app5.png)
+11. 如果没有SSL证书，可在阿里云上购买。![](./img/app6.png)
+12. 登录进来后可以看到整体的控制台如图![](./img/app2.png)
+13. 支持了很多种的OAuth登录方式，比如谷歌，Github等。
+14. 配置完，可访问https://你的域名:8080/app实现OAuth登录。
