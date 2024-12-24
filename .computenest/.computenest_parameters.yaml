@@ -2,8 +2,8 @@ ServiceType: private
 ArtifactSourceType: DockerCompose
 ServiceBuildRegion: ap-southeast-1
 RepoName: aliyun-computenest/quickstart-authorizer
-DockerComposeEnvPath: .env.test
-RegionId: ap-southeast-1
+DockerComposeEnvPath: .env.sample
+RegionId: cn-hangzhou
 CustomParameters: ''
 DockerComposeYamlPath: docker-compose.yaml
 Owner: LYH-RAIN

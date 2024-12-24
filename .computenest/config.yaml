@@ -1,5 +1,5 @@
 Service:
-  RegionId: ap-southeast-1
+  RegionId: cn-hangzhou
   DeployType: ros
   OperationMetadata:
     StatusOperationConfigs:
@@ -57,7 +57,7 @@ Artifact:
         mkdir -p /root/application
         if [ -e "/root/code/." ]; then cp -r "/root/code/." "/root/application/"; fi
         cd /root/application
-        cp .env.test ./.env
+        cp .env.sample ./.env
         sed -i 's/pull_policy: always/pull_policy: if_not_present/g' docker-compose.yaml
         docker compose -f docker-compose.yaml build
         docker compose -f docker-compose.yaml pull || true;
