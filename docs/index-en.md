@@ -24,6 +24,8 @@ The costs associated with deploying the community edition in ComputeNest mainly 
 + The selected vCPU and memory specifications
 + The type and capacity of the system disk
 + Public network bandwidth
+  In addition, a domain name and an SSL certificate are required because the Authorizer software can only be accessed via the HTTPS protocol.
+
 
 ## Deployment Architecture
 
